@@ -1,8 +1,12 @@
 from flask import Flask, request
 
-
+import model
+import layer_logic
 
 app = Flask(__name__)
+logic = layer_logic.LogicHandler()
+
+
 
 # спикер предложил всегда добавлять версию API
 # чтобы упрощать будущие миграции
@@ -11,23 +15,22 @@ API_ROOT = "/api/v1"
 NOTE_API_ROOT = API_ROOT + "/note"
 
 # Функция конвертации полученных данных в модель
-import model
 
 class ApiException(Exception):
     # В нём нет логики. Нужен только для разделения
     pass
 
 # TODO понять почему возвращает данные в бинарном виде
-def _from_raw(raw_note: str) -> model.Note:
+def _from_raw(raw_note: str) -> model.Event:
     parts = raw_note.split("|")
     if len(parts) == 2:
-        note = model.Note()
+        note = model.Event()
         note.id = None
         note.title = str(parts[0])
         note.text = str(parts[1])
         return note
     elif len(parts) == 3:
-        note = model.Note()
+        note = model.Event()
         note.id = str(parts[0])
         note.title = str(parts[1])
         note.text = str(parts[2])
@@ -41,7 +44,7 @@ def _from_raw(raw_note: str) -> model.Note:
 
 # Проверка данных является частью бизнес=логики
 # Здесь мы просто конвертируем данные
-def _to_raw(note : model.Note) -> str:
+def _to_raw(note : model.Event) -> str:
 
     if note.id is None:
         return f"{note.title}|{note.text}"
@@ -71,7 +74,7 @@ def list():
 # чтобы не задеть системную переменную id
 @app.route(NOTE_API_ROOT + "/<_id>/", methods=["GET"])
 def read(_id:str):
-    note = model.Note()
+    note = model.Event()
     note.id = 23
     note.title = "good title"
     note.text = "hello testing note for BRUUUUH"
