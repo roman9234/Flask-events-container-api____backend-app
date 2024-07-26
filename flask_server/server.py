@@ -1,7 +1,6 @@
-from flask import Flask, request
+# импортируем верхний уровень API
+from api import app
 
-app = Flask(__name__)
-
-@app.route("/")
-def hello_world():
-    return f"hello great API!"
+# в большом проекте в этом файле находились бы настройки приложения
+# TODO понять почему всё работает из-за этой строчки
+app
