@@ -1,27 +1,52 @@
 import model
-import layer_db
+# import layer_db
+import layer_db_interface
+from importlib import reload
 
-# TODO внести код для обновления модулей (reload)
-# TODO протестировать базу данных
+# перезагрузка модуля
+layer_db = reload(layer_db_interface)
 
-_db = layer_db.LocalStorage()
+_db = layer_db.DataBaseAPI()
 
 ev1 = model.Event()
 ev1.id = "23"
-ev1.text = "hello1"
+ev1.date = "2021-06-13"
+ev1.title = "event 2021"
+ev1.text = "smtg happened"
 
 ev2 = model.Event()
-ev2.id = "3"
-ev2.text = "hello2"
+ev2.id = "221"
+ev2.date = "2001-03-20"
+ev2.title = "event 2001"
+ev2.text = "smtg happened 2001"
 
 ev3 = model.Event()
-ev3.id = "2"
-ev3.text = "hello3"
+ev3.id = "18"
+ev3.date = "2017-02-27"
+ev3.title = "event 2017"
+ev3.text = "smtg happened 2017"
 
+ev4 = model.Event()
+ev4.id = "1436"
+ev4.date = "2005-08-23"
+ev4.title = "event 2005"
+ev4.text = "smtg happened 2005"
 
-
+ev5 = model.Event()
+ev5.id = "1231"
+ev5.date = "2019-01-07"
+ev5.title = "event 2019"
+ev5.text = "smtg happened 2019"
 
 print(_db.create(ev1))
-print(_db.list())
-# print(_db.read("2"))
+print(_db.create(ev2))
+print(_db.create(ev3))
+print("\n".join(_db.str_list()), end="\n\n")
+_db.delete("1")
+print("\n".join(_db.str_list()), end="\n\n")
+print(_db.create(ev4))
+print("\n".join(_db.str_list()), end="\n\n")
+_db.update("1", ev5)
+print("\n".join(_db.str_list()),end="\n\n")
 print(_db.read("1"))
+print(_db.list())
