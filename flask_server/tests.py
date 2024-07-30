@@ -1,12 +1,12 @@
 import model
 # import layer_db
-import layer_db_interface
+import layer_logic
 from importlib import reload
 
 # перезагрузка модуля
-layer_db = reload(layer_db_interface)
+layer_logic = reload(layer_logic)
 
-_db = layer_db.DataBaseAPI()
+_db = layer_logic.LogicHandler()
 
 ev1 = model.Event()
 ev1.id = "23"
@@ -34,19 +34,11 @@ ev4.text = "smtg happened 2005"
 
 ev5 = model.Event()
 ev5.id = "1231"
-ev5.date = "2019-01-07"
+ev5.date = "2001-03-20"
 ev5.title = "event 2019"
 ev5.text = "smtg happened 2019"
 
 print(_db.create(ev1))
 print(_db.create(ev2))
 print(_db.create(ev3))
-print("\n".join(_db.str_list()), end="\n\n")
-_db.delete("1")
-print("\n".join(_db.str_list()), end="\n\n")
-print(_db.create(ev4))
-print("\n".join(_db.str_list()), end="\n\n")
-_db.update("1", ev5)
-print("\n".join(_db.str_list()),end="\n\n")
-print(_db.read("1"))
-print(_db.list())
+_db.update("2", ev5)

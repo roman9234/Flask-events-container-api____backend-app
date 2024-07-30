@@ -3,7 +3,9 @@
 Стек:
 Flask - API
 curl - Тестирование
-хранение в файле - БД
+DateTime
+Exceptions classes
+static method
 
 
 Команда запуска Flask-сервера 
@@ -23,10 +25,10 @@ curl - это клиент, который умеет отправлять за�
 Пример:
 curl https://www.google.ru/
 Выбор метода
-curl http://127.0.0.1:5000/api/v1/note/ -X POST
-curl http://127.0.0.1:5000/api/v1/note/ -X GET
+curl http://127.0.0.1:5000/api/v1/calendar/ -X POST
+curl http://127.0.0.1:5000/api/v1/calendar/ -X GET
 Добавление тела запроса
-curl http://127.0.0.1:5000/api/v1/note/ -X POST -d "request body"
+curl http://127.0.0.1:5000/api/v1/calendar/ -X POST -d "request body"
 
 Мы формально ещё не знаем json так что формат заметок следующий:
 
