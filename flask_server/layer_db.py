@@ -49,5 +49,5 @@ class LocalStorage:
         self._freed_id_list.append(int(_id))
 
     # для тестов - вывод значений в виде строк
-    def str_list(self) -> List[str]:
-        return [str(x) for x in self._storage.values()]
+    # def str_list(self) -> List[str]:
+    #     return [str(x) for x in self._storage.values()]

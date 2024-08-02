@@ -78,8 +78,8 @@ class LogicHandler:
             raise LogicException(f"Failed Delete operation : {e}")
 
     # для тестов - вывод значений в виде строк
-    def str_list(self) -> List[str]:
-        try:
-            return self._db_interface.str_list()
-        except Exception as e:
-            raise LogicException(f"Failed List operation : {e}")
+    # def str_list(self) -> List[str]:
+    #     try:
+    #         return self._db_interface.str_list()
+    #     except Exception as e:
+    #         raise LogicException(f"Failed List operation : {e}")

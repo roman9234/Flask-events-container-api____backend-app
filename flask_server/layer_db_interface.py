@@ -49,8 +49,8 @@ class DataBaseAPI:
             raise DataBaseInterfaceExcaption(f"Failed Delete operation : {e}")
 
     # для тестов - вывод значений в виде строк
-    def str_list(self) -> List[str]:
-        try:
-            return self._db.str_list()
-        except Exception as e:
-            raise DataBaseInterfaceExcaption(f"Failed List operation : {e}")
+    # def str_list(self) -> List[str]:
+    #     try:
+    #         return self._db.str_list()
+    #     except Exception as e:
+    #         raise DataBaseInterfaceExcaption(f"Failed List operation : {e}")

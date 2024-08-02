@@ -13,10 +13,10 @@ def login(username):
     else:
         return f"GET method for user {username}"
 
+
 # просто API
 @app.route("/api/")
 def hello_world():
-
     # Получение данных запроса
     data = request.get_data()
 
