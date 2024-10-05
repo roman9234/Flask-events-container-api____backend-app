@@ -4,6 +4,7 @@
 (с использованием виртуального окружения)
 
 ./venv/Scripts/flask --app ./flask_server/server.py run
+либо запустить файл server.py
 
 Сервис запускается на 
 http://127.0.0.1:5000/

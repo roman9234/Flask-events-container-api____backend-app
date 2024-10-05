@@ -104,3 +104,7 @@ def delete(_id: str):
         return f"failed delete operation : {e}", 404
 
 # По сути это вся специфика Flask
+
+
+def run_server():
+    app.run()
